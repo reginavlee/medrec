@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 import NavBar from './components/navbar';
+import EntryForm from './components/entryForm';
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +14,10 @@ class App extends Component {
 
   render() {
     return (
-      <NavBar />
+      <div>
+        <NavBar />
+        <EntryForm />
+      </div>
     )
   }
 }

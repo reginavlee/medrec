@@ -1,3 +1,19 @@
 .navbar-brand {
-  color: black
+  color: black;
+}
+
+.navbar {
+  width: 100%;
+}
+
+#medbox {
+  margin-right: 20px;
+}
+
+#dentbox {
+  margin-right: 20px;
+}
+
+#details {
+  height: 50px;
 }

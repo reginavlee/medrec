@@ -22,7 +22,7 @@ const entryController = {
         console.log('successful post');
         res.status(201);
         res.json({
-          author: req.body.author,
+          name: req.body.name,
           text: req.body.text,
           category: req.body.category
         })
