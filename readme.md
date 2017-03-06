@@ -32,7 +32,7 @@ Once the project moves into development, the press release can be used as a touc
   > A quote from a spokesperson in your company.-->
 
 ## How to Get Started ##
-  + npm install.
+  + npm install
   + npm start
   + go to localhost:2000
 

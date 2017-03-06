@@ -1,4 +1,7 @@
+// database connection
+
 const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 
 const mURI = "mongodb://user1:hrla13@ds121190.mlab.com:21190/medrecdb";
 
