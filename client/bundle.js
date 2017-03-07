@@ -10356,7 +10356,7 @@ var NavBar = function (_Component) {
             _react2.default.createElement(
               'li',
               { onClick: function onClick() {
-                  return _this2.props.getEntries('/entries');
+                  return _this2.props.postEntries();
                 } },
               _react2.default.createElement(
                 'a',
@@ -23511,9 +23511,12 @@ var App = function (_Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.state = {
-      entries: false
+      entries: false,
+      postEntries: false
+
     };
     _this.getEntries = _this.getEntries.bind(_this);
+    _this.handlePostEntryClick = _this.handlePostEntryClick.bind(_this);
     return _this;
   }
 
@@ -23522,6 +23525,10 @@ var App = function (_Component) {
     value: function getEntries(endpoint) {
       var _this2 = this;
 
+      this.setState({
+        entries: false,
+        postEntries: false
+      });
       var basepath = 'http://localhost:2000';
       _axios2.default.get(basepath + endpoint).then(function (response) {
         console.log('getting response from server from front end');
@@ -23534,16 +23541,30 @@ var App = function (_Component) {
       });
     }
   }, {
+    key: 'handlePostEntryClick',
+    value: function handlePostEntryClick() {
+      this.setState({
+        entries: false,
+        postEntries: false
+      });
+      this.setState({ postEntries: true });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_navbar2.default, { getEntries: this.getEntries }),
+        _react2.default.createElement(_navbar2.default, { getEntries: this.getEntries, postEntries: this.handlePostEntryClick }),
         _react2.default.createElement(
           'div',
           null,
           this.state.entries ? _react2.default.createElement(_multiEntry2.default, { data: this.state.entries }) : null
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          this.state.postEntries ? _react2.default.createElement(_entryForm2.default, null) : null
         )
       );
     }
@@ -23582,8 +23603,15 @@ var SingleEntry = function SingleEntry(_ref) {
     'div',
     null,
     _react2.default.createElement(
+      'h5',
+      null,
+      'Name: ',
+      entry.author
+    ),
+    _react2.default.createElement(
       'p',
       null,
+      'Details: ',
       entry.text
     )
   );

@@ -19,7 +19,7 @@ class NavBar extends Component {
           <ul className="nav navbar-nav">
             <li><a href="../home/home.html">Home</a></li>
             <li onClick={()=> this.props.getEntries('/entries')} ><a href="#">Get Entries</a></li>
-            <li onClick={()=> this.props.getEntries('/entries')}><a href="#">Add Entries</a></li>            
+            <li onClick={()=> this.props.postEntries()}><a href="#">Add Entries</a></li>            
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li><a href="#">Login</a></li>

@@ -10,12 +10,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      entries: false
+      entries: false,
+      postEntries: false
+
     }
     this.getEntries = this.getEntries.bind(this);
+    this.handlePostEntryClick = this.handlePostEntryClick.bind(this);
   }
 
   getEntries(endpoint) {
+    this.setState({
+      entries: false,
+      postEntries:false
+    });
     const basepath = 'http://localhost:2000'
     axios
       .get(basepath + endpoint)
@@ -31,12 +38,23 @@ class App extends Component {
       })
   }
 
+  handlePostEntryClick() {
+    this.setState({
+      entries: false,
+      postEntries:false
+    });
+    this.setState({postEntries: true});
+  }
+
   render() {
     return (
       <div>
-        <NavBar getEntries={this.getEntries} />
+        <NavBar getEntries={this.getEntries} postEntries={this.handlePostEntryClick}/>
         <div>
           {this.state.entries ? <MultiEntry data={this.state.entries}/> : null}
+        </div>
+        <div>
+          {this.state.postEntries ? <EntryForm /> : null}
         </div>
       </div>
     )

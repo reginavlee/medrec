@@ -4,7 +4,8 @@ import React from 'react';
 
 const SingleEntry = ({entry}) => (
   <div>
-    <p>{entry.text}</p>
+    <h5>Name: {entry.author}</h5>
+    <p>Details: {entry.text}</p>
   </div>
 )
 
