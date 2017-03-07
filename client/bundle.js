@@ -11487,7 +11487,7 @@ var SingleEntry = function (_Component) {
         this.state.clicked ? _react2.default.createElement(_diagnoses2.default, { symptoms: this.state.symptoms }) : _react2.default.createElement(
           _reactBootstrap.Button,
           { type: 'submit', onClick: function onClick() {
-              return _this3.checkSymptoms('13', 'female', 1990);
+              return _this3.checkSymptoms('238', _this3.props.entry.gender, _this3.props.entry.dob);
             } },
           'Get possible diagnoses'
         )

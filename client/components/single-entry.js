@@ -45,7 +45,7 @@ class SingleEntry extends Component {
         <span className="single-entry-span entry-date">Date: {this.props.entry.date}</span>
         <span className="single-entry-span entry-Gender">Gender: {this.props.entry.gender}</span>        
         <p className="entry-details">Details: {this.props.entry.text}</p>
-        {this.state.clicked ? <Diagnoses symptoms={this.state.symptoms} /> : <Button type="submit" onClick={()=> this.checkSymptoms('13', 'female', 1990)}>Get possible diagnoses</Button> }
+        {this.state.clicked ? <Diagnoses symptoms={this.state.symptoms} /> : <Button type="submit" onClick={()=> this.checkSymptoms('238', this.props.entry.gender, this.props.entry.dob)}>Get possible diagnoses</Button> }
       </div>
     )
   }
