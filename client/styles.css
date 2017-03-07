@@ -17,3 +17,54 @@
 .multi-entry {
   padding: 70px;
 }
+
+#single-entry {
+  border: 1px solid dimgray;
+  margin: 10px;
+  padding: 10px;
+}
+
+.entry-name {
+  float: left;
+  margin-right: 10px;
+}
+
+.display-3 {
+  color: white;
+}
+
+.jumbotron {
+  background-image: url("./images/bg.jpg");
+  height: 100vh;
+  padding-top: 30px;
+  padding-bottom: 0px;
+  opacity: 0.9;
+}
+
+.jumbo-container {
+  padding: 70px;
+  margin-left: 40%;
+  margin-top: 20%;
+}
+
+/*.home-pic {
+  background: no-repeat;
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+  opacity: 0.8;
+}*/
+
+.display-3 {
+  opacity: 0.8 !important;
+}
+
+.lead {
+  opacity: 0.8
+}
+
+.home-container {
+  height: 100vh;
+}

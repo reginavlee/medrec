@@ -5,14 +5,15 @@ import axios from 'axios';
 import NavBar from './components/navbar';
 import EntryForm from './components/entryForm';
 import MultiEntry from './components/multi-entry';
+import Jumbo from './components/jumbotron';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      entries: [],
-      postEntries: false
-
+      entries: null,
+      postEntries: false,
+      home: true
     }
     this.getEntries = this.getEntries.bind(this);
     this.handlePostEntryClick = this.handlePostEntryClick.bind(this);
@@ -21,7 +22,8 @@ class App extends Component {
   getEntries(endpoint) {
     this.setState({
       entries: false,
-      postEntries:false
+      postEntries:false,
+      home: false
     });
     const basepath = 'http://localhost:2000'
     axios
@@ -41,20 +43,24 @@ class App extends Component {
   handlePostEntryClick() {
     this.setState({
       entries: false,
-      postEntries:false
+      postEntries:false,
+      home: false
     });
     this.setState({postEntries: true});
   }
 
   render() {
     return (
-      <div>
-        <NavBar getEntries={this.getEntries} postEntries={this.handlePostEntryClick}/>
-        <div>
-          {this.state.entries ? <MultiEntry data={this.state.entries}/> : null}
-        </div>
-        <div>
-          {this.state.postEntries ? <EntryForm /> : null}
+      <div className="home-container">
+        {this.state.home ? <Jumbo /> : null}
+        <div className="container">
+          <NavBar getEntries={this.getEntries} postEntries={this.handlePostEntryClick}/>
+          <div>
+            {this.state.entries ? <MultiEntry data={this.state.entries}/> : null}
+          </div>
+          <div>
+            {this.state.postEntries ? <EntryForm /> : null}
+          </div>
         </div>
       </div>
     )
