@@ -12,4 +12,3 @@ const Jumbo = () => (
 )
 
 export default Jumbo;
-      // <img src="./images/bg.jpg" className="home-pic"/>

@@ -10312,7 +10312,6 @@ var Jumbo = function Jumbo() {
 };
 
 exports.default = Jumbo;
-// <img src="./images/bg.jpg" className="home-pic"/>
 
 /***/ }),
 /* 90 */
@@ -11330,6 +11329,14 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactBootstrap = __webpack_require__(446);
 
+var _axios = __webpack_require__(33);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _diagnoses = __webpack_require__(475);
+
+var _diagnoses2 = _interopRequireDefault(_diagnoses);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11357,14 +11364,27 @@ var SingleEntry = function (_Component) {
 
   _createClass(SingleEntry, [{
     key: 'handleButtonClick',
-    value: function handleButtonClick(e) {
+    value: function handleButtonClick() {
       this.setState({
         clicked: true
       });
     }
   }, {
+    key: 'checkSymptoms',
+    value: function checkSymptoms() {
+      var baseUrl = 'https://sandbox-healthservice.priaid.ch/';
+      _axios2.default.get(baseUrl + 'diagnosis').then(function (result) {
+        console.log(result);
+      }).catch(function (err) {
+        res.status(404);
+        throw err;
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
         'div',
         { id: 'single-entry' },
@@ -11386,10 +11406,12 @@ var SingleEntry = function (_Component) {
           'Details: ',
           this.props.entry.text
         ),
-        _react2.default.createElement(
+        this.state.clicked ? _react2.default.createElement(_diagnoses2.default, null) : _react2.default.createElement(
           _reactBootstrap.Button,
-          { type: 'submit' },
-          'Check possible symptoms'
+          { type: 'submit', onClick: function onClick() {
+              return _this2.handleButtonClick();
+            } },
+          'Get possible diagnoses'
         )
       );
     }
@@ -41993,6 +42015,33 @@ function isReactComponent(component) {
   return !!(component && component.prototype && component.prototype.isReactComponent);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 475 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(18);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Diagnoses = function Diagnoses() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    'diagnoses'
+  );
+};
+
+exports.default = Diagnoses;
 
 /***/ })
 /******/ ]);
