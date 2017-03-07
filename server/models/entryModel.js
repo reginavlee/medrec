@@ -8,7 +8,7 @@ const entrySchema = new Schema({
     type: Date,
     default: Date.now
   },
-  author: String,
+  name: String,
   text: String,
   category: String
 }, { versionKey: false });
