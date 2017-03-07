@@ -7,12 +7,16 @@ class EntryForm extends Component {
     this.state = {
       name: "",
       text: "",
-      category: ""
+      category: "",
+      gender:"",
+      dob: "",
     }
     this.postEntries = this.postEntries.bind(this);
     this.handleBoxChange = this.handleBoxChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);    
+    this.handleGenderChange = this.handleGenderChange.bind(this);
+    this.handleDOBChange = this.handleDOBChange.bind(this);
   }
 
   postEntries(incomingData) {
@@ -45,6 +49,18 @@ class EntryForm extends Component {
     });
   }
 
+  handleGenderChange(event) {
+    this.setState({
+      gender: event.target.value
+    });
+  }
+
+  handleDOBChange(event) {
+    this.setState({
+      dob: event.target.value
+    });
+  }
+
   render() {
     return(
       <form className="form">
@@ -52,6 +68,18 @@ class EntryForm extends Component {
           <label htmlFor="name">Name</label>
           <input type="text" className="form-control" id="name" placeholder="Name" onChange={this.handleNameChange}></input>
         </div>
+        <div className="form-group">
+          <label htmlFor="name">Year of Birth</label>
+          <input type="text" className="form-control" id="dob" placeholder="Date of Birth" onChange={this.handleDOBChange}></input>
+        </div>
+        <div className="form-group">
+          <label id="category" htmlFor="category">Gender</label>
+          <div className="checkbox"> 
+            <label id="malebox" className="checkbox-inline"><input type="checkbox" name="male" value="male" onClick={this.handleGenderChange} />Male</label>
+            <label id="femalebox" className="checkbox-inline"><input type="checkbox" name="female" value="female" onClick={this.handleGenderChange} />Female</label>
+          </div>
+        </div>
+
         <div className="form-group">
           <label id="detailsbox" htmlFor="details">Details</label>
           <input type="text" className="form-control" id="details" placeholder="Details" onChange={this.handleTextChange}></input>

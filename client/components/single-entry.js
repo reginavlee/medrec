@@ -41,8 +41,9 @@ class SingleEntry extends Component {
   render() {
     return (
       <div id="single-entry">
-        <span className="entry-name">Name: {this.props.entry.name}</span>
-        <span className="entry-date">Date: {this.props.entry.date}</span>
+        <span className="single-entry-span entry-name">Name: {this.props.entry.name}</span>
+        <span className="single-entry-span entry-date">Date: {this.props.entry.date}</span>
+        <span className="single-entry-span entry-Gender">Gender: {this.props.entry.gender}</span>        
         <p className="entry-details">Details: {this.props.entry.text}</p>
         {this.state.clicked ? <Diagnoses symptoms={this.state.symptoms} /> : <Button type="submit" onClick={()=> this.checkSymptoms('13', 'female', 1990)}>Get possible diagnoses</Button> }
       </div>
@@ -52,9 +53,4 @@ class SingleEntry extends Component {
 
 
 export default SingleEntry;
-
-// vm.loadDiagnosis = function (selectedSymptoms, gender, yearOfBirth) {
-// 			var symptoms = selectedSymptoms.split(',');
-// 			var url = apiUrls.loadDiagnosis+'?symptoms='+JSON.stringify(symptoms)+'&gender='+gender.value+'&year_of_birth='+yearOfBirth;
-// 			generic_api_call(url, 'diagnosis','diagnosisError','diagnosisConfig');
 

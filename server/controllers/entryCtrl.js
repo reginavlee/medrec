@@ -24,7 +24,9 @@ const entryController = {
         res.json({
           name: req.body.name,
           text: req.body.text,
-          category: req.body.category
+          category: req.body.category,
+          gender: req.body.gender,
+          dob: req.body.dob
         })
       }
     })

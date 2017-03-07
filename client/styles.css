@@ -26,7 +26,10 @@
 
 .entry-name {
   float: left;
-  margin-right: 10px;
+}
+
+.single-entry-span {
+  margin-right: 30px;
 }
 
 .display-3 {

@@ -10,7 +10,9 @@ const entrySchema = new Schema({
   },
   name: String,
   text: String,
-  category: String
+  category: String,
+  gender: String,
+  dob: String
 }, { versionKey: false });
 
 const Entry = mongoose.model('Entry', entrySchema);

@@ -10154,12 +10154,16 @@ var EntryForm = function (_Component) {
     _this.state = {
       name: "",
       text: "",
-      category: ""
+      category: "",
+      gender: "",
+      dob: ""
     };
     _this.postEntries = _this.postEntries.bind(_this);
     _this.handleBoxChange = _this.handleBoxChange.bind(_this);
     _this.handleNameChange = _this.handleNameChange.bind(_this);
     _this.handleTextChange = _this.handleTextChange.bind(_this);
+    _this.handleGenderChange = _this.handleGenderChange.bind(_this);
+    _this.handleDOBChange = _this.handleDOBChange.bind(_this);
     return _this;
   }
 
@@ -10195,6 +10199,20 @@ var EntryForm = function (_Component) {
       });
     }
   }, {
+    key: 'handleGenderChange',
+    value: function handleGenderChange(event) {
+      this.setState({
+        gender: event.target.value
+      });
+    }
+  }, {
+    key: 'handleDOBChange',
+    value: function handleDOBChange(event) {
+      this.setState({
+        dob: event.target.value
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -10211,6 +10229,41 @@ var EntryForm = function (_Component) {
             'Name'
           ),
           _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'name', placeholder: 'Name', onChange: this.handleNameChange })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-group' },
+          _react2.default.createElement(
+            'label',
+            { htmlFor: 'name' },
+            'Year of Birth'
+          ),
+          _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'dob', placeholder: 'Date of Birth', onChange: this.handleDOBChange })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-group' },
+          _react2.default.createElement(
+            'label',
+            { id: 'category', htmlFor: 'category' },
+            'Gender'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'checkbox' },
+            _react2.default.createElement(
+              'label',
+              { id: 'malebox', className: 'checkbox-inline' },
+              _react2.default.createElement('input', { type: 'checkbox', name: 'male', value: 'male', onClick: this.handleGenderChange }),
+              'Male'
+            ),
+            _react2.default.createElement(
+              'label',
+              { id: 'femalebox', className: 'checkbox-inline' },
+              _react2.default.createElement('input', { type: 'checkbox', name: 'female', value: 'female', onClick: this.handleGenderChange }),
+              'Female'
+            )
+          )
         ),
         _react2.default.createElement(
           'div',
@@ -11409,15 +11462,21 @@ var SingleEntry = function (_Component) {
         { id: 'single-entry' },
         _react2.default.createElement(
           'span',
-          { className: 'entry-name' },
+          { className: 'single-entry-span entry-name' },
           'Name: ',
           this.props.entry.name
         ),
         _react2.default.createElement(
           'span',
-          { className: 'entry-date' },
+          { className: 'single-entry-span entry-date' },
           'Date: ',
           this.props.entry.date
+        ),
+        _react2.default.createElement(
+          'span',
+          { className: 'single-entry-span entry-Gender' },
+          'Gender: ',
+          this.props.entry.gender
         ),
         _react2.default.createElement(
           'p',
@@ -11440,11 +11499,6 @@ var SingleEntry = function (_Component) {
 }(_react.Component);
 
 exports.default = SingleEntry;
-
-// vm.loadDiagnosis = function (selectedSymptoms, gender, yearOfBirth) {
-// 			var symptoms = selectedSymptoms.split(',');
-// 			var url = apiUrls.loadDiagnosis+'?symptoms='+JSON.stringify(symptoms)+'&gender='+gender.value+'&year_of_birth='+yearOfBirth;
-// 			generic_api_call(url, 'diagnosis','diagnosisError','diagnosisConfig');
 
 /***/ }),
 /* 111 */
