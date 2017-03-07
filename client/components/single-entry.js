@@ -13,6 +13,7 @@ class SingleEntry extends Component {
       clicked: false
     }
     this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.checkSymptoms = this.checkSymptoms.bind(this);
   }
 
   handleButtonClick() {
@@ -25,7 +26,7 @@ class SingleEntry extends Component {
     var baseUrl = 'https://sandbox-healthservice.priaid.ch/';
     axios
       .get(baseUrl+'diagnosis')
-      .then((result) => {
+      .then((data) => {
         console.log(result);
       })
       .catch((err) => {

@@ -4,8 +4,14 @@ const Jumbo = () => (
   <div>
     <div className="jumbotron jumbotron-fluid">
       <div className="jumbo-container">
-        <h1 className="display-3">Welcome!</h1>
-        <p className="lead">A personal symptom tracker.</p>
+        <div className="col-xs-2">
+          <i className="glyphicon glyphicon-plus"></i>
+        </div>
+        <div className="col-xs-10">
+          <h1 className="display-3">Welcome to MedRec!</h1>
+          <p className="lead">Your personal symptom tracker.</p>
+          <h6 className="jumbo-disclaimer">** still go to your doctor **</h6>
+        </div>
       </div>
     </div>
   </div>

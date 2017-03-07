@@ -10297,14 +10297,28 @@ var Jumbo = function Jumbo() {
         "div",
         { className: "jumbo-container" },
         _react2.default.createElement(
-          "h1",
-          { className: "display-3" },
-          "Welcome!"
+          "div",
+          { className: "col-xs-2" },
+          _react2.default.createElement("i", { className: "glyphicon glyphicon-plus" })
         ),
         _react2.default.createElement(
-          "p",
-          { className: "lead" },
-          "A personal symptom tracker."
+          "div",
+          { className: "col-xs-10" },
+          _react2.default.createElement(
+            "h1",
+            { className: "display-3" },
+            "Welcome to MedRec!"
+          ),
+          _react2.default.createElement(
+            "p",
+            { className: "lead" },
+            "Your personal symptom tracker."
+          ),
+          _react2.default.createElement(
+            "h6",
+            { className: "jumbo-disclaimer" },
+            "** still go to your doctor **"
+          )
         )
       )
     )
@@ -11359,6 +11373,7 @@ var SingleEntry = function (_Component) {
       clicked: false
     };
     _this.handleButtonClick = _this.handleButtonClick.bind(_this);
+    _this.checkSymptoms = _this.checkSymptoms.bind(_this);
     return _this;
   }
 
@@ -11373,7 +11388,7 @@ var SingleEntry = function (_Component) {
     key: 'checkSymptoms',
     value: function checkSymptoms() {
       var baseUrl = 'https://sandbox-healthservice.priaid.ch/';
-      _axios2.default.get(baseUrl + 'diagnosis').then(function (result) {
+      _axios2.default.get(baseUrl + 'diagnosis').then(function (data) {
         console.log(result);
       }).catch(function (err) {
         res.status(404);
@@ -42037,7 +42052,21 @@ var Diagnoses = function Diagnoses() {
   return _react2.default.createElement(
     'div',
     null,
-    'diagnoses'
+    _react2.default.createElement(
+      'h5',
+      null,
+      'Possible Diagnoses'
+    ),
+    _react2.default.createElement(
+      'h6',
+      null,
+      '**still go to your doctor**'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'you might have this thing'
+    )
   );
 };
 
