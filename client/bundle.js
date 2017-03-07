@@ -11370,35 +11370,39 @@ var SingleEntry = function (_Component) {
     var _this = _possibleConstructorReturn(this, (SingleEntry.__proto__ || Object.getPrototypeOf(SingleEntry)).call(this, props));
 
     _this.state = {
-      clicked: false
+      clicked: false,
+      symptoms: null
     };
-    _this.handleButtonClick = _this.handleButtonClick.bind(_this);
     _this.checkSymptoms = _this.checkSymptoms.bind(_this);
     return _this;
   }
 
   _createClass(SingleEntry, [{
-    key: 'handleButtonClick',
-    value: function handleButtonClick() {
-      this.setState({
-        clicked: true
-      });
-    }
-  }, {
     key: 'checkSymptoms',
-    value: function checkSymptoms() {
-      var baseUrl = 'https://sandbox-healthservice.priaid.ch/';
-      _axios2.default.get(baseUrl + 'diagnosis').then(function (data) {
-        console.log(result);
+    value: function checkSymptoms(selectedSymptoms, gender, dob) {
+      var _this2 = this;
+
+      var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Iml0c21lcmVnaW5hbGVlLnJsQGdtYWlsLmNvbSIsInJvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiMTI5NSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvdmVyc2lvbiI6IjIwMCIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbGltaXQiOiI5OTk5OTk5OTkiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL21lbWJlcnNoaXAiOiJQcmVtaXVtIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9sYW5ndWFnZSI6ImVuLWdiIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9leHBpcmF0aW9uIjoiMjA5OS0xMi0zMSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbWVtYmVyc2hpcHN0YXJ0IjoiMjAxNy0wMy0wNyIsImlzcyI6Imh0dHBzOi8vc2FuZGJveC1hdXRoc2VydmljZS5wcmlhaWQuY2giLCJhdWQiOiJodHRwczovL2hlYWx0aHNlcnZpY2UucHJpYWlkLmNoIiwiZXhwIjoxNDg4OTIwMjg4LCJuYmYiOjE0ODg5MTMwODh9.PhkNzwphDii5Ghv4fdTliRydMNxQ7iRZ2rGmcYhFNyk";
+      var symptoms = selectedSymptoms.split(',');
+      var url = 'https://sandbox-healthservice.priaid.ch/diagnosis' + '?symptoms=' + JSON.stringify(symptoms) + '&gender=' + gender + '&year_of_birth=' + dob + '&token=' + token + '&language=en-gb&format=json';
+      var temp = null;
+      _axios2.default.get(url).then(function (diagnosis) {
+        temp = diagnosis.data;
+        console.log('temp', temp);
+        _this2.setState({
+          clicked: true,
+          symptoms: temp
+        });
+        console.log('successful get to apimedic');
       }).catch(function (err) {
-        res.status(404);
+        console.log('error in get to apimedic');
         throw err;
       });
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       return _react2.default.createElement(
         'div',
@@ -11421,10 +11425,10 @@ var SingleEntry = function (_Component) {
           'Details: ',
           this.props.entry.text
         ),
-        this.state.clicked ? _react2.default.createElement(_diagnoses2.default, null) : _react2.default.createElement(
+        this.state.clicked ? _react2.default.createElement(_diagnoses2.default, { symptoms: this.state.symptoms }) : _react2.default.createElement(
           _reactBootstrap.Button,
           { type: 'submit', onClick: function onClick() {
-              return _this2.handleButtonClick();
+              return _this3.checkSymptoms('13', 'female', 1990);
             } },
           'Get possible diagnoses'
         )
@@ -11436,6 +11440,11 @@ var SingleEntry = function (_Component) {
 }(_react.Component);
 
 exports.default = SingleEntry;
+
+// vm.loadDiagnosis = function (selectedSymptoms, gender, yearOfBirth) {
+// 			var symptoms = selectedSymptoms.split(',');
+// 			var url = apiUrls.loadDiagnosis+'?symptoms='+JSON.stringify(symptoms)+'&gender='+gender.value+'&year_of_birth='+yearOfBirth;
+// 			generic_api_call(url, 'diagnosis','diagnosisError','diagnosisConfig');
 
 /***/ }),
 /* 111 */
@@ -42048,7 +42057,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Diagnoses = function Diagnoses() {
+var Diagnoses = function Diagnoses(_ref) {
+  var symptoms = _ref.symptoms;
   return _react2.default.createElement(
     'div',
     null,
@@ -42063,9 +42073,18 @@ var Diagnoses = function Diagnoses() {
       '**still go to your doctor**'
     ),
     _react2.default.createElement(
-      'p',
+      'ul',
       null,
-      'you might have this thing'
+      symptoms.map(function (obj, i) {
+        return _react2.default.createElement(
+          'li',
+          { key: i },
+          obj.Issue.Name,
+          '; (',
+          obj.Issue.IcdName,
+          ')'
+        );
+      })
     )
   );
 };

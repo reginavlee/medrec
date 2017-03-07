@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const Diagnoses = () => (
+const Diagnoses = ({symptoms}) => (
   <div>
     <h5>Possible Diagnoses</h5>
     <h6>**still go to your doctor**</h6>
-    <p>you might have this thing</p>
+    <ul>
+      {symptoms.map((obj, i) => {
+        return <li key={i}>{obj.Issue.Name}; ({obj.Issue.IcdName})</li>
+      })}
+    </ul>
   </div>
 );
 
