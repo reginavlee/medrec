@@ -25,7 +25,7 @@ class App extends Component {
       postEntries:false,
       home: false
     });
-    const basepath = 'http://localhost:2000'
+    const basepath = 'http://hidden-hollows-41265.herokuapp.com'
     axios
       .get(basepath + endpoint)
       .then((response) => {

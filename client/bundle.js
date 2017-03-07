@@ -10170,7 +10170,7 @@ var EntryForm = function (_Component) {
   _createClass(EntryForm, [{
     key: 'postEntries',
     value: function postEntries(incomingData) {
-      _axios2.default.post('http://localhost:2000/entries', incomingData).then(function (result) {
+      _axios2.default.post('http://hidden-hollows-41265.herokuapp.com/entries', incomingData).then(function (result) {
         console.log('successful post from front end', result);
       }).catch(function (err) {
         console.log('error in post from front end', err);
@@ -23801,7 +23801,7 @@ var App = function (_Component) {
         postEntries: false,
         home: false
       });
-      var basepath = 'http://localhost:2000';
+      var basepath = 'http://hidden-hollows-41265.herokuapp.com';
       _axios2.default.get(basepath + endpoint).then(function (response) {
         console.log('getting response from server from front end');
         console.log(response.data);
