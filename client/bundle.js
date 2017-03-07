@@ -17211,7 +17211,7 @@ var EntryForm = function (_Component) {
   _createClass(EntryForm, [{
     key: 'postEntries',
     value: function postEntries(incomingData) {
-      _axios2.default.post('http://hidden-hollows-41265.herokuapp.com/entries', incomingData).then(function (result) {
+      _axios2.default.post('https://hidden-hollows-41265.herokuapp.com/entries', incomingData).then(function (result) {
         console.log('successful post from front end', result);
       }).catch(function (err) {
         console.log('error in post from front end', err);

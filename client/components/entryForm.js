@@ -21,7 +21,7 @@ class EntryForm extends Component {
 
   postEntries(incomingData) {
     axios
-      .post('http://hidden-hollows-41265.herokuapp.com/entries', incomingData)
+      .post('https://hidden-hollows-41265.herokuapp.com/entries', incomingData)
       .then((result) => {
         console.log('successful post from front end', result);
       })
