@@ -8,7 +8,7 @@ const app = express();
 const db = require('./data/config');
 const entryCtrl = require('./controllers/entryCtrl');
 
-const port = process.env.PORT || 2000;
+const port = process.env.PORT || 8000;
 
 //middleware
 app.use(parser.json());
@@ -22,6 +22,6 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.get('/entries', entryCtrl.entryController.get);
 app.post('/entries', entryCtrl.entryController.post);
 
-app.listen(port, 'localhost', () => {
+app.listen(port, () => {
   console.log('listening on port ', port);
 })
