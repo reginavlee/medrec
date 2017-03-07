@@ -6,14 +6,14 @@
   width: 100%;
 }
 
-#medbox {
-  margin-right: 20px;
-}
-
-#dentbox {
-  margin-right: 20px;
-}
-
 #details {
   height: 50px;
+}
+
+.form {
+  padding: 70px;
+}
+
+.multi-entry {
+  padding: 70px;
 }

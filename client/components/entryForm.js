@@ -6,23 +6,36 @@ class EntryForm extends Component {
     this.state = {
       clicked: false
     }
+    this.postEntries = this.postEntries.bind(this);
+  }
+
+  postEntries(incomingData) {
+    const basepath = 'http://localhost:2000';
+    
+  }
+
+  handleBoxChange(event) {
+
   }
 
   render() {
     return(
-      <form>
+      <form className="form">
         <div className="form-group">
-          <label for="name">Name</label>
+          <label htmlFor="name">Name</label>
           <input type="text" className="form-control" id="name" placeholder="Name"></input>
         </div>
         <div className="form-group">
-          <label id="detailsbox" for="details">Details</label>
+          <label id="detailsbox" htmlFor="details">Details</label>
           <input type="text" className="form-control" id="details" placeholder="Details"></input>
         </div>
-        <div className="checkbox">
-          <label id="medbox"><input type="checkbox" name="medical" />Medical</label>
-          <label id="dentbox"><input type="checkbox" name="dental" />Dental</label>
-          <label id="visionbox"><input type="checkbox" name="vision" />Vision</label>
+        <div className="form-group">
+          <label id="category" htmlFor="category">Category</label>
+          <div className="checkbox"> 
+            <label id="medbox" className="checkbox-inline"><input type="checkbox" name="medical" />Medical</label>
+            <label id="dentbox" className="checkbox-inline"><input type="checkbox" name="dental" />Dental</label>
+            <label id="visionbox" className="checkbox-inline"><input type="checkbox" name="vision" />Vision</label>
+          </div>
         </div>
         <button type="submit" className="btn btn-default">Submit</button>
       </form>
