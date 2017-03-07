@@ -4,7 +4,7 @@
   "description": "mvp for hrla13",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server/server",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack -w"
   },
@@ -22,6 +22,7 @@
     "axios": "^0.15.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
+    "cors": "^2.8.1",
     "express": "^4.15.2",
     "mongoose": "^4.8.6",
     "mongoose-auto-increment": "^5.0.1",

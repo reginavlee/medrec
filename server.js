@@ -1,21 +1,22 @@
 // server starting poing
 
+const path = require('path');
 const express = require('express');
 const parser = require('body-parser');
-const path = require('path');
+const cors = require('cors');
 
 const app = express();
-const db = require('./data/config');
-const entryCtrl = require('./controllers/entryCtrl');
+const db = require('./server/data/config');
+const entryCtrl = require('./server/controllers/entryCtrl');
 
 const port = process.env.PORT || 8000;
 
 //middleware
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
+app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'client')));
-
+app.use(express.static(__dirname + '/client'));
 // app.use(express.static('client')); 
 
 //routes
