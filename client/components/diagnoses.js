@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Diagnoses = ({symptoms}) => (
-  <div>
+  <div className="diagnoses">
     <h5>Possible Diagnoses</h5>
     <h6>**still go to your doctor**</h6>
     <ul>

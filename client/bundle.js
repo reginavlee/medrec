@@ -17279,7 +17279,7 @@ var EntryForm = function (_Component) {
             { htmlFor: 'name' },
             'Year of Birth'
           ),
-          _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'dob', placeholder: 'Date of Birth', onChange: this.handleDOBChange })
+          _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'dob', placeholder: 'Year of Birth', onChange: this.handleDOBChange })
         ),
         _react2.default.createElement(
           'div',
@@ -18428,29 +18428,29 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Diagnoses = function Diagnoses(_ref) {
   var symptoms = _ref.symptoms;
   return _react2.default.createElement(
-    'div',
-    null,
+    "div",
+    { className: "diagnoses" },
     _react2.default.createElement(
-      'h5',
+      "h5",
       null,
-      'Possible Diagnoses'
+      "Possible Diagnoses"
     ),
     _react2.default.createElement(
-      'h6',
+      "h6",
       null,
-      '**still go to your doctor**'
+      "**still go to your doctor**"
     ),
     _react2.default.createElement(
-      'ul',
+      "ul",
       null,
       symptoms.map(function (obj, i) {
         return _react2.default.createElement(
-          'li',
+          "li",
           { key: i },
           obj.Issue.Name,
-          '; (',
+          "; (",
           obj.Issue.IcdName,
-          ')'
+          ")"
         );
       })
     )
@@ -18509,17 +18509,18 @@ var SingleEntry = function (_Component) {
       symptoms: null
     };
     _this.checkSymptoms = _this.checkSymptoms.bind(_this);
+    _this.randomNum = Math.floor(Math.random() * 200) + 1;
     return _this;
   }
 
   _createClass(SingleEntry, [{
     key: 'checkSymptoms',
-    value: function checkSymptoms(selectedSymptoms, gender, dob) {
+    value: function checkSymptoms(gender, dob) {
       var _this2 = this;
 
-      var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Iml0c21lcmVnaW5hbGVlLnJsQGdtYWlsLmNvbSIsInJvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiMTI5NSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvdmVyc2lvbiI6IjIwMCIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbGltaXQiOiI5OTk5OTk5OTkiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL21lbWJlcnNoaXAiOiJQcmVtaXVtIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9sYW5ndWFnZSI6ImVuLWdiIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9leHBpcmF0aW9uIjoiMjA5OS0xMi0zMSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbWVtYmVyc2hpcHN0YXJ0IjoiMjAxNy0wMy0wNyIsImlzcyI6Imh0dHBzOi8vc2FuZGJveC1hdXRoc2VydmljZS5wcmlhaWQuY2giLCJhdWQiOiJodHRwczovL2hlYWx0aHNlcnZpY2UucHJpYWlkLmNoIiwiZXhwIjoxNDg4OTMxNTU0LCJuYmYiOjE0ODg5MjQzNTR9.bOMHfaF385XwpcjRXyjzHG3rRONV5whOVc20CliqqgA";
-      var symptoms = selectedSymptoms.split(',');
-      var url = 'https://sandbox-healthservice.priaid.ch/diagnosis' + '?symptoms=' + JSON.stringify(symptoms) + '&gender=' + gender + '&year_of_birth=' + dob + '&token=' + token + '&language=en-gb&format=json';
+      console.log(JSON.stringify([this.randomNum]));
+      var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Iml0c21lcmVnaW5hbGVlLnJsQGdtYWlsLmNvbSIsInJvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiMTI5NSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvdmVyc2lvbiI6IjIwMCIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbGltaXQiOiI5OTk5OTk5OTkiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL21lbWJlcnNoaXAiOiJQcmVtaXVtIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9sYW5ndWFnZSI6ImVuLWdiIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9leHBpcmF0aW9uIjoiMjA5OS0xMi0zMSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbWVtYmVyc2hpcHN0YXJ0IjoiMjAxNy0wMy0wNyIsImlzcyI6Imh0dHBzOi8vc2FuZGJveC1hdXRoc2VydmljZS5wcmlhaWQuY2giLCJhdWQiOiJodHRwczovL2hlYWx0aHNlcnZpY2UucHJpYWlkLmNoIiwiZXhwIjoxNDg4OTM5OTQyLCJuYmYiOjE0ODg5MzI3NDJ9.R-tm5fE9tQBUecuXWQuAh69-o5rxYXC7J5MEWFZo-3Y";
+      var url = 'https://sandbox-healthservice.priaid.ch/diagnosis' + '?symptoms=["' + this.randomNum + '"]&gender=' + gender + '&year_of_birth=' + dob + '&token=' + token + '&language=en-gb&format=json';
       var temp = null;
       _axios2.default.get(url).then(function (diagnosis) {
         temp = diagnosis.data;
@@ -18569,7 +18570,7 @@ var SingleEntry = function (_Component) {
         this.state.clicked ? _react2.default.createElement(_diagnoses2.default, { symptoms: this.state.symptoms }) : _react2.default.createElement(
           _reactBootstrap.Button,
           { type: 'submit', onClick: function onClick() {
-              return _this3.checkSymptoms('238', _this3.props.entry.gender, _this3.props.entry.dob);
+              return _this3.checkSymptoms(_this3.props.entry.gender, _this3.props.entry.dob);
             } },
           'Get possible diagnoses'
         )

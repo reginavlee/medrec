@@ -70,7 +70,7 @@ class EntryForm extends Component {
         </div>
         <div className="form-group">
           <label htmlFor="name">Year of Birth</label>
-          <input type="text" className="form-control" id="dob" placeholder="Date of Birth" onChange={this.handleDOBChange}></input>
+          <input type="text" className="form-control" id="dob" placeholder="Year of Birth" onChange={this.handleDOBChange}></input>
         </div>
         <div className="form-group">
           <label id="category" htmlFor="category">Gender</label>
