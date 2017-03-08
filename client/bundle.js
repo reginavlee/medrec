@@ -18436,14 +18436,9 @@ var Diagnoses = function Diagnoses(_ref) {
       "Possible Diagnoses"
     ),
     _react2.default.createElement(
-      "h6",
-      null,
-      "**still go to your doctor**"
-    ),
-    _react2.default.createElement(
       "ul",
       null,
-      symptoms.map(function (obj, i) {
+      symptoms.length > 0 ? symptoms.map(function (obj, i) {
         return _react2.default.createElement(
           "li",
           { key: i },
@@ -18452,7 +18447,16 @@ var Diagnoses = function Diagnoses(_ref) {
           obj.Issue.IcdName,
           ")"
         );
-      })
+      }) : _react2.default.createElement(
+        "li",
+        null,
+        "Unable to predict a diagnosis. Go see your physician."
+      )
+    ),
+    _react2.default.createElement(
+      "h6",
+      null,
+      "** still go see your doctor **"
     )
   );
 };
