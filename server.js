@@ -17,7 +17,6 @@ app.use(parser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use(express.static(__dirname + '/client'));
-// app.use(express.static('client')); 
 
 //routes
 app.get('/entries', entryCtrl.entryController.get);
